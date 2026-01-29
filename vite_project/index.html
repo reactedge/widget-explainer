@@ -1,0 +1,28 @@
+<body>
+<script type="module" src="./src/widget.ts"></script>
+
+<div class="explainer" id="banner-explainer">
+    <button data-explain="banner-isolation">Banner trigger</button>
+    <div id="outside">Outside</div>
+
+    <explainer-widget config-key="banner-explainer"></explainer-widget>
+
+    <script type="application/json" id="reactedge-config">
+        {
+            "widgets": {
+                "banner-explainer": {
+                    "selector": "[data-explain='banner-isolation']",
+                    "title": "Isolated banner",
+                    "notes": "<p>This banner is deployed independently from the core system.</p>",
+                    "illustration": {
+                        "svg": "/illustrations/isolation.svg"
+                    },
+                    "layout": "right"
+                }
+            }
+        }
+    </script>
+</div>
+
+
+</body>

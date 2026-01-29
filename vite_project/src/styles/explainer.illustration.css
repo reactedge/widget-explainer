@@ -1,0 +1,15 @@
+/* illustration */
+.re-explainer-illustration {
+    flex: 0 0 500px;
+    max-width: 500px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.re-explainer-illustration img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
