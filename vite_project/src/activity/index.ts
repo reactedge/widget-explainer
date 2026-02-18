@@ -31,7 +31,7 @@ export function activity(
         ts: Date.now(),
     };
 
-    const prefix = `[RE:contact] [${phase}]`;
+    const prefix = `[rx:explainer] [${phase}]`;
 
     if (level === 'error') {
         console.error(prefix, payload);

@@ -2,26 +2,51 @@
 <script type="module" src="./src/widget.ts"></script>
 
 <div class="explainer" id="banner-explainer">
-    <button data-explain="banner-isolation">Banner trigger</button>
+    <button data-explainer-trigger="banner-isolation">Banner trigger</button>
     <div id="outside">Outside</div>
 
-    <explainer-widget config-key="banner-explainer"></explainer-widget>
-
-    <script type="application/json" id="reactedge-config">
-        {
-            "widgets": {
-                "banner-explainer": {
-                    "selector": "[data-explain='banner-isolation']",
-                    "title": "Isolated banner",
-                    "notes": "<p>This banner is deployed independently from the core system.</p>",
+    <explainer-widget config-key="banner-explainer">
+        <script type="application/json" data-config>
+            {
+                "data": {
+                    "title": "Controlled Information Architecture",
+                    "summary": "Navigation should accelerate growth — not trigger a development project.",
+                    "sections": [
+                        {
+                            "type": "friction",
+                            "title": "Where friction appears",
+                            "items": [
+                                "Reordering categories requires developer intervention",
+                                "Campaign highlights disrupt header structure",
+                                "A/B testing navigation feels unsafe",
+                                "Styling updates cascade into unrelated components",
+                                "Performance impact is paid globally, even when unused"
+                            ]
+                        },
+                        {
+                            "type": "impact",
+                            "title": "What isolation changes",
+                            "items": [
+                                "Menu structure defined declaratively",
+                                "Rendering separated from theme templates",
+                                "Styling scoped and predictable",
+                                "No core template overrides",
+                                "Independent deployment of navigation updates"
+                            ]
+                        }
+                    ],
+                    "closing": "Navigation becomes a growth interface — not a theme dependency.",
                     "illustration": {
                         "svg": "/illustrations/isolation.svg"
                     },
                     "layout": "right"
+                },
+                "binding": {
+                    "trigger": "[data-explainer-trigger='banner-isolation']"
                 }
             }
-        }
-    </script>
+        </script>
+    </explainer-widget>
 </div>
 
 

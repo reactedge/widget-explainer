@@ -21,6 +21,11 @@ export function useExplainerTrigger(
         const toggle = (e: Event) => {
             e.stopPropagation();
             setOpen(v => !v);
+            activity(
+                'explainer-trigger',
+                'Toggle explainer',
+                { selector }
+            );
         };
 
         const onKeyDown = (e: KeyboardEvent) => {

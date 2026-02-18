@@ -6,4 +6,6 @@ class ExplainerWidget extends HTMLElement {
     }
 }
 
-customElements.define("explainer-widget", ExplainerWidget);
+if (!customElements.get("explainer-widget")) {
+    customElements.define("explainer-widget", ExplainerWidget);
+}
