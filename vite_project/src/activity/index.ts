@@ -1,20 +1,8 @@
 import { isActivityEnabled } from './activity.guard';
+import {WIDGET_ID} from "../mountWidget.tsx";
 
 type Level = 'info' | 'warn' | 'error';
 
-/*
-Contact widget activity phases:
-
-- bootstrap
-- config
-- form-ready
-- turnstile-ready
-- submit-click
-- validation-failed
-- submission-start
-- submission-success
-- submission-failed
-*/
 export function activity(
     phase: string,
     message: string,
@@ -31,7 +19,7 @@ export function activity(
         ts: Date.now(),
     };
 
-    const prefix = `[rx:explainer] [${phase}]`;
+    const prefix = `[${WIDGET_ID}] ${phase}`;
 
     if (level === 'error') {
         console.error(prefix, payload);

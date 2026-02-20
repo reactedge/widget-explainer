@@ -46,7 +46,7 @@ export function readWidgetConfig(hostElement: HTMLElement): WidgetConfig | null 
         const triggerSelector = parsed.binding?.trigger;
 
         if (!triggerSelector) {
-            activity('config', "Explainer: no trigger defined", {triggerSelector}, 'error');
+            activity('config', "no trigger defined", {triggerSelector}, 'error');
             return null;
         }
 
