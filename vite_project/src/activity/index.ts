@@ -12,7 +12,7 @@ export function activity(
     if (!isActivityEnabled()) return;
 
     const payload = {
-        widget: 'explainer',
+        widget: `${WIDGET_ID}`,
         phase,
         message,
         data,
