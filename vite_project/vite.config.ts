@@ -3,13 +3,14 @@ import react from '@vitejs/plugin-react-swc'
 import pkg from './package.json'
 import { manifestPlugin } from './manifestPlugin'
 
+const widgetName = 'explainer';
 export default defineConfig({
   plugins: [
     react(),
-    manifestPlugin({ widgetName: 'explainer' })
+    manifestPlugin({ widgetName }),
   ],
   define: {
-    'process.env': {},
+    'process.env': {}
   },
   build: {
     outDir: "../www",
@@ -17,17 +18,16 @@ export default defineConfig({
     emptyOutDir: false,
     lib: {
       entry: "src/widget.ts",
-      name: "WidgetExplainer",
-      fileName: () => `widget-explainer@${pkg.version}.iife.js`,
+      fileName: () => `widget-${widgetName}@${pkg.version}.iife.js`,
       formats: ["iife"],
     },
     rollupOptions: {
       output: {
         inlineDynamicImports: true,
-        assetFileNames: "widget-explainer.[ext]",
+        assetFileNames: `widget-${widgetName}.[ext]`,
       },
     },
     minify: true,
     sourcemap: false
   }
-});
+})
