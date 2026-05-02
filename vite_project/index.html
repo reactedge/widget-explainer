@@ -1,53 +1,26 @@
+<!DOCTYPE html>
+<html>
 <body>
-<script type="module" src="./src/widget.ts"></script>
+
+<h2>explainer x2 Test</h2>
 
 <div class="explainer" id="banner-explainer">
     <button data-explainer-trigger="banner-isolation">Banner trigger</button>
     <div id="outside">Outside</div>
-
-    <explainer-widget config-key="banner-explainer">
-        <script type="application/json" data-config>
-            {
-                "data": {
-                    "title": "Controlled Information Architecture",
-                    "summary": "Navigation should accelerate growth — not trigger a development project.",
-                    "sections": [
-                        {
-                            "type": "friction",
-                            "title": "Where friction appears",
-                            "items": [
-                                "Reordering categories requires developer intervention",
-                                "Campaign highlights disrupt header structure",
-                                "A/B testing navigation feels unsafe",
-                                "Styling updates cascade into unrelated components",
-                                "Performance impact is paid globally, even when unused"
-                            ]
-                        },
-                        {
-                            "type": "impact",
-                            "title": "What isolation changes",
-                            "items": [
-                                "Menu structure defined declaratively",
-                                "Rendering separated from theme templates",
-                                "Styling scoped and predictable",
-                                "No core template overrides",
-                                "Independent deployment of navigation updates"
-                            ]
-                        }
-                    ],
-                    "closing": "Navigation becomes a growth interface — not a theme dependency.",
-                    "illustration": {
-                        "svg": "/illustrations/isolation.svg"
-                    },
-                    "layout": "right"
-                },
-                "binding": {
-                    "trigger": "[data-explainer-trigger='banner-isolation']"
-                }
-            }
-        </script>
-    </explainer-widget>
 </div>
 
+<script type="module">
+    import { mount } from './src/widget.ts';
+    import {loadContractByName} from "./src/widget-runtime/lib/contractLoader.js";
+    const config = await loadContractByName('/cdn/herobanner-explainer.json')
+    const element = document.querySelector('explainer-widget');
+
+    await requestAnimationFrame(() => {
+        mount(element, config);
+    })
+</script>
+
+<explainer-widget config-key="banner-explainer"></explainer-widget>
 
 </body>
+</html>

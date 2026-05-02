@@ -3,10 +3,11 @@ import {injectStyles} from "./lib/style";
 import {ExplainerWidgetWrapper} from "./ExplainerWidgetWrapper";
 import {fallback} from "./lib/fallback";
 import {createRoot} from "react-dom/client";
+import type {WidgetConfig} from "./ExplainerConfig.ts";
 
 export const WIDGET_ID = 'explainer';
 
-export function mountWidget(hostElement: HTMLElement) {
+export function mountWidget(hostElement: HTMLElement, config: WidgetConfig) {
     const shadow =
         hostElement.shadowRoot || hostElement.attachShadow({ mode: "open" });
 
@@ -22,7 +23,7 @@ export function mountWidget(hostElement: HTMLElement) {
     }
 
     const element = (
-        <ExplainerWidgetWrapper host={hostElement} />
+        <ExplainerWidgetWrapper host={hostElement} rawConfig={config} />
     );
 
     createRoot(mountNode).render(

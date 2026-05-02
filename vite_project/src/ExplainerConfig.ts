@@ -1,5 +1,4 @@
 import {activity} from "./activity";
-import {WIDGET_ID} from "./mountWidget.tsx";
 
 export interface ExplainerIllustration {
     svg: string;        // inline SVG string OR URL
@@ -31,29 +30,12 @@ export interface WidgetConfig {
     }
 }
 
-export function readWidgetConfig(hostElement: HTMLElement): WidgetConfig | null {
-    const configScript = hostElement.querySelector<HTMLScriptElement>(
-        'script[type="application/json"][data-config]'
-    );
+export function readWidgetConfig(rawConfig: WidgetConfig): WidgetConfig {
+    let contract = rawConfig
 
-    if (!configScript) {
-        throw new Error(`${WIDGET_ID} widget requires a <script data-config> block.`);
-    }
+    activity('bootstrap', 'Config resolved', contract);
 
-    try {
-        const parsed = JSON.parse(configScript.textContent || "{}");
-
-        const triggerSelector = parsed.binding?.trigger;
-
-        if (!triggerSelector) {
-            activity('config', "no trigger defined", {triggerSelector}, 'error');
-            return null;
-        }
-
-        return Object.freeze(parsed);
-    } catch {
-        return null;
-    }
+    return Object.freeze(contract);
 }
 
 export function resolveTrigger(selector: string): HTMLElement | null {

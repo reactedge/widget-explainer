@@ -1,11 +1,12 @@
-import { mountWidget } from "./mountWidget";
+import {mountWidget, WIDGET_ID} from "./mountWidget";
+import type {WidgetConfig} from "./ExplainerConfig.ts";
 
-class ExplainerWidget extends HTMLElement {
-    connectedCallback() {
-        mountWidget(this);
-    }
+const mount = async (el: HTMLElement, config: WidgetConfig) => {
+    await mountWidget(el, config)
 }
 
-if (!customElements.get("explainer-widget")) {
-    customElements.define("explainer-widget", ExplainerWidget);
-}
+const api = { mount };
+
+(window as any)[`ReactEdge_${WIDGET_ID}`] = api;
+
+export { mount };
